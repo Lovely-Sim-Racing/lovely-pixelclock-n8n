@@ -5,7 +5,7 @@
 <h1 align="center">Lovely Pixel Clock (n8n)</h1>
 
 <p align="center">
-Workflow scripts for the Ulanzi Pixel Clock, based on n8n.io
+Workflow scripts for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</a>, based on n8n.io
 </p>
  
 ---
