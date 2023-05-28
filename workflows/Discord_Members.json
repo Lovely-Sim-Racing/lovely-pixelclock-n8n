@@ -1,0 +1,108 @@
+{
+  "name": "Discord Members",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "id": "9948f9d0-3b5f-4235-b9ee-8d488209f5e0",
+      "name": "Every Hour",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://discord.com/api/v9/invites/XXXXX?with_counts=true&with_expiration=true",
+        "options": {}
+      },
+      "id": "c5b14070-e92a-4adf-ab10-218549ab1394",
+      "name": "Fetch Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        780,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "discord"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ \n\nIntl.NumberFormat('en-US', { notation: \"compact\", maximumFractionDigits: 2 }).format($json.approximate_member_count)\n\n}}"
+            },
+            {
+              "name": "icon",
+              "value": "53218"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c5ff8b46-d5ea-40de-8946-be2fae0e1121",
+      "name": "Send to Clock",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        980,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Every Hour": {
+      "main": [
+        [
+          {
+            "node": "Fetch Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Data": {
+      "main": [
+        [
+          {
+            "node": "Send to Clock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "4617b10b-2202-4441-b4d9-544853afd523",
+  "id": "18",
+  "meta": {
+    "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
+  },
+  "tags": []
+}

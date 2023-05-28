@@ -1,0 +1,126 @@
+{
+  "name": "Instagram Followers",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://i.instagram.com/api/v1/users/web_profile_info/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "XXXXXX"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "user-agent",
+              "value": "=Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ee424fd0-aaae-4ef6-9f77-2a4b267f7830",
+      "name": "Fetch Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        2160,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "id": "93b6aa05-c913-4fdc-9360-034413272e83",
+      "name": "Every Hour",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        1940,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "instagram"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ \n\nIntl.NumberFormat('en-US', { notation: \"compact\", maximumFractionDigits: 2 }).format($json.data.user.edge_followed_by.count)\n\n}}"
+            },
+            {
+              "name": "icon",
+              "value": "8649"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "adab2e73-25cb-4d9d-83e4-6ee4c8030613",
+      "name": "Send to Clock",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        2380,
+        140
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Fetch Data": {
+      "main": [
+        [
+          {
+            "node": "Send to Clock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every Hour": {
+      "main": [
+        [
+          {
+            "node": "Fetch Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "4de42009-7e40-4404-9dfa-0bbb2ec45c0b",
+  "id": "19",
+  "meta": {
+    "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
+  },
+  "tags": []
+}

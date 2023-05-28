@@ -1,0 +1,116 @@
+{
+  "name": "LFM Counter",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "5867e1df-21ce-48b6-9b9d-8473fc71e290",
+      "name": "Every 5 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api2.lowfuelmotorsport.com/api/licenseWidgetUserData/XXXXX",
+        "options": {}
+      },
+      "id": "094f6c6e-ee3f-4cd2-a1fb-dd39a39c0d98",
+      "name": "Fetch Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        780,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "lfm"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ $json.user.cc_rating + '     ' + $json[\"user\"][\"license\"] + '     ' + $json[\"user\"][\"safety_rating\"] }}"
+            },
+            {
+              "name": "icon",
+              "value": "53202"
+            },
+            {
+              "name": "pushIcon",
+              "value": "2"
+            },
+            {
+              "name": "textOffset",
+              "value": "4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "30230a8e-4a8a-4f84-9b8f-dcb403b03520",
+      "name": "Send to Clock",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        980,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Every 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Fetch Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Data": {
+      "main": [
+        [
+          {
+            "node": "Send to Clock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "9dce80e3-a4a3-48a2-a15f-28d1fbe4e5aa",
+  "id": "17",
+  "meta": {
+    "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
+  },
+  "tags": []
+}
