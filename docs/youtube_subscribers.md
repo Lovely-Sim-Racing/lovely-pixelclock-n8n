@@ -10,7 +10,7 @@ Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</
  
 ---
 
-Display your [Youtube Channel Subscribers](https://youtube.com) Statistsics on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
+Display your [Youtube Channel Subscribers](https://youtube.com) on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
 
 ## Steps
 
@@ -20,7 +20,7 @@ Display your [Youtube Channel Subscribers](https://youtube.com) Statistsics on y
 3. Type `5029` into the first field named **Lametric Icon ID**
 4. Click **Download**
 
-#### Step 2: Download the Yotube Subscriber workflow
+#### Step 2: Download the Youtube Subscriber workflow
 1. Visit the [Latest Releases](https://github.com/cdemetriadis/lovely-pixelclock-n8n/releases) section and download the `Youtube_Subscribers.json` file to your computer
 
 #### Step 3: Import Workflow
