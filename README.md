@@ -49,8 +49,8 @@ As mentioned, the **Ulanzi Pixel Clock** is highy customisable and in fact could
 
 ## My Workflow Instructions
 
+* [**Low Fuel Motorsport Stats**](docs/lfm_stats.md)
 * [**Instagram Followers**](docs/instagram_followers.md)
 * [**Discord Members**](docs/discord_members.md)
-* [**Youtube Subscribers**](docs/youtube_subscribers.md)
-* [**Twitter Followers**](docs/twitter_followers.md)
-* [**Low Fuel Motorsport Stats**](docs/lfm_counter.md)
+* [**Youtube Subscribers**](docs/youtube_subscribers.md) (Requires API Keys)
+* [**Twitter Followers**](docs/twitter_followers.md) (Requires API Keys)
