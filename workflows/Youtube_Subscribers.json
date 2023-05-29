@@ -1,0 +1,128 @@
+{
+  "name": "Youtube Subscribers",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://youtube.googleapis.com/youtube/v3/channels",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "CHANNELID"
+            },
+            {
+              "name": "key",
+              "value": "APIKEY"
+            },
+            {
+              "name": "part",
+              "value": "statistics"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4a380e4a-5210-42a0-adc0-adcb60accf34",
+      "name": "Fetch Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1700,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "id": "029b7ae7-d85c-41b2-b383-83f84206420c",
+      "name": "Every Hour",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "ytsubs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ \n\nIntl.NumberFormat('en-US', { notation: \"compact\", maximumFractionDigits: 2 }).format($json.items[0].statistics.subscriberCount )\n\n}}"
+            },
+            {
+              "name": "icon",
+              "value": "5029"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b1f826a4-05a0-4a09-997d-7bbe03a921c1",
+      "name": "Send to Clock",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1920,
+        280
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Fetch Data": {
+      "main": [
+        [
+          {
+            "node": "Send to Clock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every Hour": {
+      "main": [
+        [
+          {
+            "node": "Fetch Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "saveManualExecutions": false,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "a2ddad99-234a-4e6d-86b3-24a00b7c78f2",
+  "id": "20",
+  "meta": {
+    "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
+  },
+  "tags": []
+}
