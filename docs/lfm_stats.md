@@ -21,7 +21,7 @@ Display your [Low Fuel Motorpsort](https://lowfuelmotorsport.com) Statistsics on
 4. Click **Download**
 
 #### Step 2: Download the LFM workflow
-1. Visit the [Latest Releases](https://github.com/cdemetriadis/lovely-pixelclock-n8n/releases) section and download the `LFM_Counter.json` file to your computer
+1. Visit the [Latest Releases](https://github.com/cdemetriadis/lovely-pixelclock-n8n/releases) section and download the `LFM_Stats.json` file to your computer
 
 #### Step 3: Import Workflow
 1. In your n8n automation server, create a new workflow
