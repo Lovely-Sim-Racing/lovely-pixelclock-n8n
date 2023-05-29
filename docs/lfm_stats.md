@@ -2,7 +2,7 @@
 <img width="150" height="150" alt="Lovely Sim Racing" src="images/lr-logo-small.png">
 </p>
 
-<h1 align="center">Low Fuel Motorsport Counter</h1>
+<h1 align="center">Low Fuel Motorsport Stats</h1>
 
 <p align="center">
 Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</a>, based on the <a href="https://n8n.io">n8n.io</a> automation software.
