@@ -5,7 +5,7 @@
 <h1 align="center">Lovely Pixel Clock</h1>
 
 <p align="center">
-Workflow scripts for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</a>, based on the <a href="https://n8n.io">n8n.io</a> automation software.
+Workflow scripts for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</a>, based on the <a href="https://n8n.io">n8n.io</a> automation software and <a href="https://blueforcer.github.io/awtrix-light/">Awtrix Light</a>.
 </p>
  
 ---
@@ -45,7 +45,9 @@ The Ulanzi Pixel Clock is an affordable, highly customisable and programmable Pi
 ### Buy the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</a>
 
 ## Customising the Pixel Clock
-As mentioned, the **Ulanzi Pixel Clock** is highy customisable and in fact could work **any API data** you can get your hands on. In this repository, I'm sharing my own workflows but through the video linked above, I walk you through how to setup the Ulanzi Pixel Clock and make your own.
+As mentioned, the **Ulanzi Pixel Clock** is highy customisable and in fact could work with **any API data** you can get your hands on - as long as you update its' firmware to [**Awtrix Light**](https://blueforcer.github.io/awtrix-light/). 
+
+In this repository, I'm sharing my own workflows but through the video linked above, I walk you through how to setup the Ulanzi Pixel Clock and make your own.
 
 ## My Workflow Instructions
 
