@@ -67,7 +67,3 @@ Display your [Twitch Followers](https://twitch.tv) on your [Ulanzi Pixel Clock](
 
 ## Having trouble?
 Visit the [Lovely Discord](https://j76.me/LSRDiscord) and perhaps I can help you there.
-
-
-## Twitter App Description
-*"I want to use this API to display my Twitter Follower count on a physical device digital clock. This will be for personal use and will also be used on my Live Streams as a progress indicator. I will not show any public information related to my followers."*
