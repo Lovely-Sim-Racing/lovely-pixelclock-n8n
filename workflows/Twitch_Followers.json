@@ -1,0 +1,126 @@
+{
+  "name": "Twitch Followers",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "id": "4ba12ef1-7c41-45d0-b848-eb250aff9ab7",
+      "name": "Every Hour",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twitch.tv/helix/channels/followers",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "broadcaster_id",
+              "value": "484612191"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Id",
+              "value": "XXXXX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3ed24bc0-7615-4e15-82af-2d8cd338029f",
+      "name": "Fetch Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        780,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "twitch"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ \n\nIntl.NumberFormat('en-US', { notation: \"compact\", maximumFractionDigits: 2 }).format($json[\"total\"])\n\n}}"
+            },
+            {
+              "name": "icon",
+              "value": "20643"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "63f755fe-8609-45ad-9427-8fbecac82bb7",
+      "name": "Send to Clock",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        980,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Every Hour": {
+      "main": [
+        [
+          {
+            "node": "Fetch Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Data": {
+      "main": [
+        [
+          {
+            "node": "Send to Clock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "e33537b1-bffd-49b3-9d51-26a786542a1f",
+  "id": "26",
+  "meta": {
+    "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
+  },
+  "tags": []
+}

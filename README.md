@@ -56,4 +56,5 @@ In this repository, I'm sharing my own workflows but through the video linked ab
 * [**Instagram Followers**](docs/instagram_followers.md)
 * [**Discord Members**](docs/discord_members.md)
 * [**Youtube Subscribers**](docs/youtube_subscribers.md) (Requires API Keys)
+* [**Twitch Followers**](docs/twitch_followers.md) (Requires API Keys)
 * [**Twitter Followers**](docs/twitter_followers.md) (Requires API Keys)
