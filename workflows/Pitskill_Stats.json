@@ -1,0 +1,129 @@
+{
+  "name": "Pitskill Stats",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.pitskill.io/api/pitskill/getdriverinfo",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "XXXX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "38a7320d-a5b0-49d7-9fff-bff6ee4299ba",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        780,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "pitskill"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ $json.payload.tpc_driver_data.currentPitSkill + '     ' + $json.payload.tpc_driver_data.licence_class + '     ' + $json.payload.tpc_driver_data.currentPitRep }} "
+            },
+            {
+              "name": "duration",
+              "value": "17"
+            },
+            {
+              "name": "icon",
+              "value": "53380"
+            },
+            {
+              "name": "pushIcon",
+              "value": "2"
+            },
+            {
+              "name": "textOffset",
+              "value": "4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "abe92327-3146-43f4-a7e5-55f0c822bee8",
+      "name": "Send ELO to Clock",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        980,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "66dc1db1-4356-41ca-8352-2b7a0d62e744",
+      "name": "Every 5 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send ELO to Clock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "dfa78b96-ce98-4be2-98ec-d55433aa09b5",
+  "id": "24",
+  "meta": {
+    "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
+  },
+  "tags": []
+}
