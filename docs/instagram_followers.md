@@ -12,6 +12,11 @@ Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</
 
 Display your **Instagram Follower Count** on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
 
+## Display
+**Template:** `Follower Count` Rounded down to three significant figures
+
+**Example:** `1.12K`
+
 ## Steps
 
 #### Step 1: Upload Icon
@@ -34,6 +39,9 @@ Display your **Instagram Follower Count** on your [Ulanzi Pixel Clock](https://j
 #### Step 5: Send to Clock
 1. On the last step named **Send to Clock**, make sure the IP address in the URL field is correct (usually `192.168.1.128`)
 2. Back on the Workflow canvas, click on the button `Execute Workflow`
+
+#### Step 6: Set to Active
+Set the workflow to "Active", to keep it running in the background
 
 
 ## Having trouble?

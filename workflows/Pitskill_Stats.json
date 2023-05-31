@@ -91,6 +91,30 @@
         580,
         540
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "pitskill"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8900ae53-64bc-42a5-b1c6-1543a40c9bf1",
+      "name": "Remove App",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        780,
+        720
+      ]
     }
   ],
   "pinData": {},
@@ -120,7 +144,7 @@
   },
   "active": false,
   "settings": {},
-  "versionId": "dfa78b96-ce98-4be2-98ec-d55433aa09b5",
+  "versionId": "cf718de5-70d9-4700-929f-912f9cde3923",
   "id": "24",
   "meta": {
     "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"

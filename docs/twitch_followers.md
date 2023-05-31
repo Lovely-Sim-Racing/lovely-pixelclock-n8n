@@ -12,6 +12,11 @@ Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</
 
 Display your [Twitch Followers](https://twitch.tv) on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
 
+## Display
+**Template:** `Follower Count` Rounded down to three significant figures
+
+**Example:** `43.42K`
+
 ## Steps
 
 #### Step 1: Upload Icon
@@ -62,6 +67,9 @@ Display your [Twitch Followers](https://twitch.tv) on your [Ulanzi Pixel Clock](
 #### Step 5: Send to Clock
 1. On the last step named **Send to Clock**, make sure the IP address in the URL field is correct (usually `192.168.1.128`)
 2. On the Workflow canvas, click on the button `Execute Workflow`
+
+#### Step 6: Set to Active
+Set the workflow to "Active", to keep it running in the background
 
 
 ## Having trouble?

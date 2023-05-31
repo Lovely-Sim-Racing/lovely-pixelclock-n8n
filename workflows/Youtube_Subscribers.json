@@ -87,6 +87,30 @@
         1920,
         280
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "ytsubs"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "44b6179f-a8d9-4d03-9afc-11b8873b5ba8",
+      "name": "Remove App",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1700,
+        460
+      ]
     }
   ],
   "pinData": {},
@@ -119,7 +143,7 @@
     "saveManualExecutions": false,
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "a2ddad99-234a-4e6d-86b3-24a00b7c78f2",
+  "versionId": "3c656325-3c11-414b-9188-e4e8ba37375a",
   "id": "20",
   "meta": {
     "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"

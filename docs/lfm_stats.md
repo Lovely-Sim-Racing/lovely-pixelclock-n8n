@@ -12,6 +12,11 @@ Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</
 
 Display your [Low Fuel Motorpsort](https://lowfuelmotorsport.com) Statistsics on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
 
+## Display
+**Template:** `ELO LICENSE SR`
+
+**Example:** `2562 SILVER 7.83`
+
 ## Steps
 
 #### Step 1: Upload Icon
@@ -35,6 +40,9 @@ Display your [Low Fuel Motorpsort](https://lowfuelmotorsport.com) Statistsics on
 #### Step 5: Send to Clock
 1. On the last step named **Send to Clock**, make sure the IP address in the URL field is correct (usually `192.168.1.128`)
 2. On the Workflow canvas, click on the button `Execute Workflow`
+
+#### Step 6: Set to Active
+Set the workflow to "Active", to keep it running in the background
 
 
 ## Having trouble?
