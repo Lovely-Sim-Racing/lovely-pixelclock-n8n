@@ -1,0 +1,213 @@
+{
+  "name": "Pitskill Race",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.pitskill.io/api/events/upcomingRegistrations",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "XXXXX"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "294a4419-8f5b-4d09-b24b-0e3ab221184d",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        800,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "pitskill_race"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "={{ $json.payload[0].event_registrations[0].vehicle_registration.server.server_name + ' - ' + DateTime.fromISO($json.payload[0].start_date).setZone('system').toFormat('LLL dd, HH:mm') }}"
+            },
+            {
+              "name": "duration",
+              "value": "22"
+            },
+            {
+              "name": "icon",
+              "value": "53380"
+            },
+            {
+              "name": "pushIcon",
+              "value": "2"
+            },
+            {
+              "name": "textOffset",
+              "value": "4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f8f0bc9d-01f1-43ae-9234-aeaa45dbe0dd",
+      "name": "Send ELO to Clock",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1240,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a336ed7d-dae4-4f65-bc2d-10760cac00e1",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "5f46eb83-b940-4da7-99d2-9ccbd332fb7b",
+      "name": "Every 5 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.payload }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "508e8c80-9364-4ec0-8818-dc3dec97f8e6",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "pitskill_race"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b994d7b5-db42-45cf-8406-060e83a70c89",
+      "name": "Remove App",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1240,
+        640
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every 5 Minutes": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Send ELO to Clock",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Remove App",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "d25839fa-a9b3-4aab-835a-f60c8ae2b7b0",
+  "id": "31",
+  "meta": {
+    "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
+  },
+  "tags": []
+}
