@@ -47,9 +47,8 @@ Display your [Twitch Followers](https://twitch.tv) on your [Ulanzi Pixel Clock](
 4. Under **Generic Auth Type**, select **OAuth2 API**
 5. Under **Credential for OAuth2 API**, select **Create New Credential**
 6. In the pop up screen, enter the following:
-	1. **Grant Type**: `Authorization Code`
-	2. **Authorization URL**: `https://id.twitch.tv/oauth2/authorize`
-	3. **Access Token URL**: `https://id.twitch.tv/oauth2/token`
+	1. **Grant Type**: `Client Credentials`
+	2. **Access Token URL**: `https://id.twitch.tv/oauth2/token`
 	3. **Client ID**: `YOUR CLIENT ID`
 	4. **Client Secret**: `YOUR CLIENT SECRET`
 	5. **Scope**: `moderator:read:followers`
