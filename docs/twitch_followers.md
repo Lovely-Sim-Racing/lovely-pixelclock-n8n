@@ -12,6 +12,11 @@ Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</
 
 Display your [Twitch Followers](https://twitch.tv) on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
 
+## Display
+**Template:** `Follower Count` Rounded down to three significant figures
+
+**Example:** `43.42K`
+
 ## Steps
 
 #### Step 1: Upload Icon
@@ -47,9 +52,8 @@ Display your [Twitch Followers](https://twitch.tv) on your [Ulanzi Pixel Clock](
 4. Under **Generic Auth Type**, select **OAuth2 API**
 5. Under **Credential for OAuth2 API**, select **Create New Credential**
 6. In the pop up screen, enter the following:
-	1. **Grant Type**: `Authorization Code`
-	2. **Authorization URL**: `https://id.twitch.tv/oauth2/authorize`
-	3. **Access Token URL**: `https://id.twitch.tv/oauth2/token`
+	1. **Grant Type**: `Client Credentials`
+	2. **Access Token URL**: `https://id.twitch.tv/oauth2/token`
 	3. **Client ID**: `YOUR CLIENT ID`
 	4. **Client Secret**: `YOUR CLIENT SECRET`
 	5. **Scope**: `moderator:read:followers`
@@ -63,6 +67,9 @@ Display your [Twitch Followers](https://twitch.tv) on your [Ulanzi Pixel Clock](
 #### Step 5: Send to Clock
 1. On the last step named **Send to Clock**, make sure the IP address in the URL field is correct (usually `192.168.1.128`)
 2. On the Workflow canvas, click on the button `Execute Workflow`
+
+#### Step 6: Set to Active
+Set the workflow to "Active", to keep it running in the background
 
 
 ## Having trouble?

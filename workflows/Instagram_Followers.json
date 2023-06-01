@@ -3,57 +3,6 @@
   "nodes": [
     {
       "parameters": {
-        "url": "https://i.instagram.com/api/v1/users/web_profile_info/",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "username",
-              "value": "XXXXXX"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "user-agent",
-              "value": "=Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "ee424fd0-aaae-4ef6-9f77-2a4b267f7830",
-      "name": "Fetch Data",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [
-        2160,
-        140
-      ]
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "hours"
-            }
-          ]
-        }
-      },
-      "id": "93b6aa05-c913-4fdc-9360-034413272e83",
-      "name": "Every Hour",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1,
-      "position": [
-        1940,
-        140
-      ]
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "http://192.168.1.128/api/custom",
         "sendQuery": true,
@@ -80,13 +29,100 @@
         },
         "options": {}
       },
-      "id": "adab2e73-25cb-4d9d-83e4-6ee4c8030613",
+      "id": "2ae6b16a-c43f-4084-835a-f306b82b5236",
       "name": "Send to Clock",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        2380,
-        140
+        2240,
+        -160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "45c9c3b2-9b39-45a7-9a01-b322c40eb087",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "instagram"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "96269d6b-e443-441c-89d8-29e0a0d093ad",
+      "name": "Remove App",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        2060,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://i.instagram.com/api/v1/users/web_profile_info/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "XXXXX"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "user-agent",
+              "value": "Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a420e50d-6740-4910-8816-01dca05d4123",
+      "name": "Fetch Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2060,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
+      },
+      "id": "2f991ab1-676a-45f0-8866-23440ff2281c",
+      "name": "Every 4 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        -160
       ]
     }
   ],
@@ -103,7 +139,7 @@
         ]
       ]
     },
-    "Every Hour": {
+    "Every 2 Hours": {
       "main": [
         [
           {
@@ -117,8 +153,8 @@
   },
   "active": false,
   "settings": {},
-  "versionId": "4de42009-7e40-4404-9dfa-0bbb2ec45c0b",
-  "id": "19",
+  "versionId": "564f26f4-4ed8-40af-a9bc-eaa0bd957374",
+  "id": "34",
   "meta": {
     "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
   },

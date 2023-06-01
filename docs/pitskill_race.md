@@ -2,7 +2,7 @@
 <img width="150" height="150" alt="Lovely Sim Racing" src="images/lr-logo-small.png">
 </p>
 
-<h1 align="center">Low Fuel Motorsport Stats</h1>
+<h1 align="center">Pitskill Stats</h1>
 
 <p align="center">
 Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</a>, based on the <a href="https://n8n.io">n8n.io</a> automation software and <a href="https://blueforcer.github.io/awtrix-light/">Awtrix Light</a>.
@@ -10,32 +10,32 @@ Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</
  
 ---
 
-Display your [Low Fuel Motorpsort](https://lowfuelmotorsport.com) Statistsics on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
+Display your [PitSkill](https://pitskill.io) Statistsics on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
 
 ## Display
-**Template:** `ELO LICENSE SR`
+**Template:** `Pitskill.io | Session Name - Split # | #Race_ID - MMM DD, HH:mm`
 
-**Example:** `2562 SILVER 7.83`
+**Example:** `Pitskill.io | Ranked Daily - Americas - Week 7 - 7 - Split 1 | #CGUf - Jun 01, 03:00`
 
 ## Steps
 
 #### Step 1: Upload Icon
 1. Navigate to your Ulanzi Pixel Clock admin screen (usually `192.168.1.128`)
 2. Select the **Icons** Tab
-3. Type `53202` into the first field named **Lametric Icon ID**
+3. Type `53380` into the first field named **Lametric Icon ID**
 4. Click **Download**
 
 #### Step 2: Download the LFM workflow
-1. Visit the [Latest Releases](https://github.com/cdemetriadis/lovely-pixelclock-n8n/releases) section and download the `LFM_Stats.json` file to your computer
+1. Visit the [Latest Releases](https://github.com/cdemetriadis/lovely-pixelclock-n8n/releases) section and download the `Pitskill_Race.json` file to your computer
 
 #### Step 3: Import Workflow
 1. In your n8n automation server, create a new workflow
 2. `Import from File` and select the downloaded Workflow
 
 #### Step 4: Fetch Data
-1. Find your **LFM ID** by visiting your Profile Page on [Low Fuel Motorpsort](https://lowfuelmotorsport.com) website. Your ID is in the URL (the ID is the last number)
+1. Find your **Pitskill License Number** by visiting your "My Racing License" on the [Pitskill](https://pitskill.io) website. Your "License No" is located on the left, in your driver card info.
 2. Double-click and open the second step of the workflow, named **Fetch Data**
-3. Replace the `XXXXX` in the URL field with your LFM ID. 
+3. Replace the `XXXX` in the Value field with your Pitskill License No. 
 
 #### Step 5: Send to Clock
 1. On the last step named **Send to Clock**, make sure the IP address in the URL field is correct (usually `192.168.1.128`)

@@ -52,7 +52,9 @@ In this repository, I'm sharing my own workflows but through the video linked ab
 ## My Workflow Instructions
 
 * [**Low Fuel Motorsport Stats**](docs/lfm_stats.md)
+* [**Low Fuel Motorsport Next race**](docs/lfm_race.md)
 * [**Pitskill Stats**](docs/pitskill_stats.md)
+* [**Pitskill Next Race**](docs/pitskill_race.md)
 * [**Instagram Followers**](docs/instagram_followers.md)
 * [**Discord Members**](docs/discord_members.md)
 * [**Youtube Subscribers**](docs/youtube_subscribers.md) (Requires API Keys)

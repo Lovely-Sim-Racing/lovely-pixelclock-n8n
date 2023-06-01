@@ -13,9 +13,9 @@ Workflow script for the <a href="https://j76.me/PixelClock">Ulanzi Pixel Clock</
 Display your [Low Fuel Motorpsort](https://lowfuelmotorsport.com) Statistsics on your [Ulanzi Pixel Clock](https://j76.me/PixelClock)
 
 ## Display
-**Template:** `ELO LICENSE SR`
+**Template:** `Session Name - Split # - #Race_ID - MMM DD, HH:mm`
 
-**Example:** `2562 SILVER 7.83`
+**Example:** `Coach Dave GT3 Sprint Series - Split 1 - #43567 - May 31, 21:15`
 
 ## Steps
 
@@ -26,7 +26,7 @@ Display your [Low Fuel Motorpsort](https://lowfuelmotorsport.com) Statistsics on
 4. Click **Download**
 
 #### Step 2: Download the LFM workflow
-1. Visit the [Latest Releases](https://github.com/cdemetriadis/lovely-pixelclock-n8n/releases) section and download the `LFM_Stats.json` file to your computer
+1. Visit the [Latest Releases](https://github.com/cdemetriadis/lovely-pixelclock-n8n/releases) section and download the `LFM_Race.json` file to your computer
 
 #### Step 3: Import Workflow
 1. In your n8n automation server, create a new workflow

@@ -88,6 +88,30 @@
         980,
         540
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "twitch"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "57baf4e9-8798-412c-ae13-9cd9dbf48b87",
+      "name": "Remove App",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        780,
+        760
+      ]
     }
   ],
   "pinData": {},
@@ -117,7 +141,7 @@
   },
   "active": false,
   "settings": {},
-  "versionId": "e33537b1-bffd-49b3-9d51-26a786542a1f",
+  "versionId": "4433076c-0786-4347-836d-b57717e4e8a0",
   "id": "26",
   "meta": {
     "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"

@@ -79,6 +79,30 @@
         1620,
         280
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "twitterfollowers"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d2770601-a151-4d56-8f4a-7dea148c243e",
+      "name": "Remove App",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1420,
+        460
+      ]
     }
   ],
   "pinData": {},
@@ -111,7 +135,7 @@
     "saveManualExecutions": false,
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "bd2ae7b5-b1b7-471d-a001-708f34da3aad",
+  "versionId": "f45e614a-facb-4705-8468-9950dacb42e1",
   "id": "22",
   "meta": {
     "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"

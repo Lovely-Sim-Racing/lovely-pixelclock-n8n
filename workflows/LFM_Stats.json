@@ -1,5 +1,5 @@
 {
-  "name": "LFM Counter",
+  "name": "LFM Stats",
   "nodes": [
     {
       "parameters": {
@@ -78,6 +78,30 @@
         980,
         540
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.128/api/custom",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "lfm"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3658f445-68b2-417e-a5db-026b0c115bc9",
+      "name": "Remove App",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        780,
+        700
+      ]
     }
   ],
   "pinData": {},
@@ -107,7 +131,7 @@
   },
   "active": false,
   "settings": {},
-  "versionId": "9dce80e3-a4a3-48a2-a15f-28d1fbe4e5aa",
+  "versionId": "bd43bdde-476e-4fad-9d9c-c3017cec29d3",
   "id": "17",
   "meta": {
     "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
