@@ -3,77 +3,6 @@
   "nodes": [
     {
       "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "hours"
-            }
-          ]
-        }
-      },
-      "id": "7110a1fd-a3bb-4562-8b0a-a70f8988ee79",
-      "name": "Every Hour",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1,
-      "position": [
-        1900,
-        -160
-      ]
-    },
-    {
-      "parameters": {
-        "url": "https://www.picnob.com/profile/XXXXXXXXXX/igtv/",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "user-agent",
-              "value": "Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)"
-            }
-          ]
-        },
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "file"
-            }
-          }
-        }
-      },
-      "id": "3d78689d-1f5b-4530-8770-e0852d01791a",
-      "name": "Fetch Data",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        2060,
-        -160
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "extractHtmlContent",
-        "sourceData": "binary",
-        "extractionValues": {
-          "values": [
-            {
-              "key": "Followers",
-              "cssSelector": ".item_followers div.num"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "891b3d6d-4c04-49a3-9c3e-9adaa8e7fe76",
-      "name": "Parse Data",
-      "type": "n8n-nodes-base.html",
-      "typeVersion": 1,
-      "position": [
-        2220,
-        -160
-      ]
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "http://192.168.1.128/api/custom",
         "sendQuery": true,
@@ -90,7 +19,7 @@
           "parameters": [
             {
               "name": "text",
-              "value": "={{ \n\nIntl.NumberFormat('en-US', { notation: \"compact\", maximumFractionDigits: 2 }).format($json.Followers)\n\n}}"
+              "value": "={{ \n\nIntl.NumberFormat('en-US', { notation: \"compact\", maximumFractionDigits: 2 }).format($json.data.user.edge_followed_by.count)\n\n}}"
             },
             {
               "name": "icon",
@@ -100,13 +29,24 @@
         },
         "options": {}
       },
-      "id": "ff833fef-1c56-4f06-8714-a33e004f6c39",
+      "id": "2ae6b16a-c43f-4084-835a-f306b82b5236",
       "name": "Send to Clock",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        2400,
+        2240,
         -160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "45c9c3b2-9b39-45a7-9a01-b322c40eb087",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        -340
       ]
     },
     {
@@ -124,41 +64,71 @@
         },
         "options": {}
       },
-      "id": "62fcce61-b327-4ee5-a5a4-2a6bcf979655",
+      "id": "96269d6b-e443-441c-89d8-29e0a0d093ad",
       "name": "Remove App",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
       "position": [
-        2140,
-        80
+        2060,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://i.instagram.com/api/v1/users/web_profile_info/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "XXXXX"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "user-agent",
+              "value": "Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a420e50d-6740-4910-8816-01dca05d4123",
+      "name": "Fetch Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2060,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
+      },
+      "id": "2f991ab1-676a-45f0-8866-23440ff2281c",
+      "name": "Every 4 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        -160
       ]
     }
   ],
   "pinData": {},
   "connections": {
-    "Every Hour": {
-      "main": [
-        [
-          {
-            "node": "Fetch Data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Fetch Data": {
-      "main": [
-        [
-          {
-            "node": "Parse Data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Parse Data": {
       "main": [
         [
           {
@@ -168,12 +138,23 @@
           }
         ]
       ]
+    },
+    "Every 2 Hours": {
+      "main": [
+        [
+          {
+            "node": "Fetch Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {},
-  "versionId": "b1f5e3b9-b764-4348-bf66-5acee50cd58c",
-  "id": "19",
+  "versionId": "564f26f4-4ed8-40af-a9bc-eaa0bd957374",
+  "id": "34",
   "meta": {
     "instanceId": "d8d66fcd7d07924945bc1e620604d1c6aa07facc79672a71bea616442093ee2c"
   },
